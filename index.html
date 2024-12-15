@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial- scale=1.0">
+<title>Home - Personal Website</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+<header>
+<h1>Welcome to My Personal Website</h1>
+</header>
+<nav>
+<ul>
+<li><a href="index.html"><i class="fas fa-home"></i> HOME</a></li>
+<li class="dropdown">
+<a href="#" class="dropbtn"><i class="fas fa-user"></i> ABOUT</a> <div class="dropdown-content">
+<a href="skills.html">Skills I'm Developing</a> <a href="goals.html">My Goals as a Student</a>
+<a href="funfacts.html">Fun Facts About Me</a> 
+</div>
+</li>
+<li><a href="gallery.html"><i class="fas fa-images"></i> GALLERY</a></li> <li><a href="contact.html"><i class="fas fa-envelope"></i> CONTACT</a></li> <a href="javascript:void(0);" class="logout-button" onclick="confirmLogout()"><i class="fas fa-sign-out-alt"></i> LOG OUT</a>
+</ul>
+</nav>
+<section id="section2"></section>
+<div class="slider">
+<div class="slides">
+<div class="slide">
+<img src="silder image/462586694_1801253807356187_9022641354413999545_n.jpg" alt="Image 1" class="lightbox-trigger" onclick="openLightbox(0)">
+<div class="text-overlay"><h1> Welcome to my Website!    
+</h1></div>
+</div>
+<div class="slide">
+<img src="silder image/462571935_1792167661620735_6179785915346677235_n.jpg" alt="Image 2" class="lightbox-trigger" onclick="openLightbox(1)">
+<div class="text-overlay"><h1>Explore my website and Learn more about me!</h1></div> </div>
+<div class="slide">
+<img src="silder image/462566652_4018887935038210_2229823564109709719_n.jpg" alt="Image 3" class="lightbox-trigger" onclick="openLightbox(2)">
+<div class="text-overlay"><h1>Enjoy!</h1></div> 
+</div>
+</div>
+</div>
+
+<section id="drop">
+<h2>Fun Facts About Me</h2>
+<p>Welcome to my Fun Facts About Me! Here, you'll get a glimpse into my passions, interests, and the little quirks that make me who I am. </p>
+<div class="funfact-container"> <div class="funfact-card">
+<div class="funfact-inner">
+<div class="funfact-front">
+<p>I love Programming!</p>
+</div>
+<div class="funfact-back">
+<p>I can code and make a mean cup of coffee always a study essential!</p>
+</div>
+</div>
+</div>
+<div class="funfact-card">
+<div class="funfact-inner">
+<div class="funfact-front"> 
+<p>Coffee Explorer!</p> 
+</div>
+<div class="funfact-back">
+<p>I'm on a mission to try every coffee shop in my town!</p>
+</div>
+</div>
+</div>
+<div class="funfact-card">
+<div class="funfact-inner">
+<div class="funfact-front">
+<p>Code + Music Combo! </p>
+</div>
+<div class="funfact-back">
+<p>My best code happens when I'm listening to OPM and RNB!</p>
+</div>
+</div>
+</div>
+<div class="funfact-card"> 
+<div class="funfact-inner"> 
+<div class="funfact-front"> 
+<p>Goal Setter! </p> 
+</div>
+<div class="funfact-back">
+<p>I keep a list of 100 things to achieve this year, from tiny wins to big dreams!</p>
+</div>
+</div>
+</div>
+</div>
+<!-- See More Button -->
+<div class="see-more-container">
+<a href="funfacts.html" class="see-more-button">See More
+Funfacts</a>
+</div> 
+</section>
+
+<div class="container">
+<div class="image-section">
+<img src="homepage image/Surprised_Shaq.jpg" alt="Ton's Image">
+</div>
+<div class="quote-section">
+<h1>Hi, I'm Rejohn!</h1>
+<p>
+    Hi, I'm Rejohn!
+    I'm an Information Technology student who loves front-end web development. I enjoy exploring new things in technology and creating projects that make a difference. I also like graphic design, making websites look good on any device, and sharing ideas through public speaking. I'm always ready to learn and try new things.
+</p> <blockquote>
+    "When you love what you do, creating great work becomes natural."
+</blockquote>
+</div>
+</div>
+<footer>
+<p>&copy; 2024 Rejohn James D. Ballenas. All rights reserved.</p> 
+</footer>
+<div class="footer-divider"></div> <!-- Orange line -->
+
+<!-- Lightbox Container -->
+<div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightboxImage" src="">
+    <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+    <a class="next" onclick="changeImage(1)">&#10095;</a>
+</div>
+
+
+            <!-- Embedded JavaScript -->
+<script>            
+const slides = document.querySelector('.slides');
+let index = 0;
+function showNextSlide() {
+index = (index + 1) % 3;
+slides.style.transform = 'translateX(' + (-index * 100) + '%)';
+}
+setInterval(showNextSlide, 3000); // Change slide every 3 seconds
+
+// Add lightbox functionality
+let currentImageIndex = 0;
+const images = document.querySelectorAll('.lightbox-trigger');
+
+function openLightbox(index) {
+    document.getElementById('lightbox').style.display = 'block';
+    currentImageIndex = index;
+    showImage(currentImageIndex);
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+}
+
+function showImage(index) {
+    const lightboxImg = document.getElementById('lightboxImage');
+    lightboxImg.src = images[index].src;
+}
+
+function changeImage(direction) {
+    currentImageIndex += direction;
+    
+    // Wrap around when at the start or end of the images
+    if (currentImageIndex < 0) {
+        currentImageIndex = images.length - 1;
+    } else if (currentImageIndex >= images.length) {
+        currentImageIndex = 0;
+    }
+    
+    showImage(currentImageIndex);
+}
+
+// Add keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('lightbox').style.display === 'block') {
+        if (e.key === 'ArrowLeft') {
+            changeImage(-1);
+        } else if (e.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    }
+});
+
+// Close lightbox when clicking outside the image
+document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeLightbox();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () { 
+const logoutButton = document.querySelector('.logout-button .dropbtn');
+const logoutDropdown = document.querySelector('.logout- dropdown');
+
+// Toggle dropdown visibility on button click
+logoutButton.addEventListener('click', function () { 
+logoutDropdown.style.display =
+logoutDropdown.style.display === 'block' ? 'none': 'block';
+});
+
+// Close dropdown if clicking outside of it
+window.addEventListener('click', function (event) {
+if (!event.target.matches('.dropbtn')) {
+if (logoutDropdown.style.display === 'block') {
+logoutDropdown.style.display = 'none';
+}
+}
+});
+});
+
+</script> 
+<script>
+    
+// Logout function with confirmation
+function confirmLogout() {
+
+// Show a confirmation message to the user
+const confirmLogout = confirm("Are you sure you want to log out?");
+
+// If the user confirms, proceed with logging out
+if (confirmLogout) {
+
+ // Mark the user as logged out in localStorage (if used) localStorage.removeltem("isLoggedIn'); // Or any other keys related to login credentials
+
+// Redirect to the login page
+window.location.href = 'login.html';
+} else {
+
+// If the user cancels, do nothing 
+return;
+}
+}
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const funfactCards = document.querySelectorAll('.funfact-card');
+
+    funfactCards.forEach(card => {
+        card.addEventListener('click', function () {
+            this.classList.toggle('flipped');
+        });
+    });
+});
+</script>
+</body>
+</html>

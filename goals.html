@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial- scale=1.0">
+<title>My Goals as a Student</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header>
+<h1>Welcome to My Personal Website</h1>
+</header>
+<nav>
+<ul>
+<li><a href="index.html"><i class="fas fa-home"></i> HOME</a></li>
+<li class="dropdown">
+<a href="#" class="dropbtn"><i class="fas fa-user"></i> ABOUT</a> <div class="dropdown-content">
+<a href="skills.html">Skills I'm Developing</a> <a href="goals.html">My Goals as a Student</a> <a href="funfacts.html">Fun Facts About Me</a> </div>
+</li>
+<li><a href="gallery.html"><i class="fas fa-images"></i> GALLERY</a></li> <li><a href="contact.html"><i class="fas fa-envelope"></i> CONTACT</a></li> <a href="javascript:void(0);" class="logout-button" onclick="confirmLogout()"><i class="fas fa-sign-out-alt"></i> LOG OUT</a>
+</ul>
+</nav>
+<section id="section2"></section> <section id="drop">
+<h2>My Goals as a Student</h2>
+<p style="text-align: center;">Here are the aspirations I'm passionately pursuing!</p>
+<div class="goal-grid">
+<div class="goal-card" onclick="toggleGoalDetails(1)"> <div class="goal-header" style="background-color: #595879;"><strong>Short-Term Goals</strong></div> <p><strong>Develop Skills and Build a Career </strong></p>
+<div class="goal-details" id="goal1-details"> <p>In the short term, I aim to improve my skills and gain experience that will help me land a fulfilling job. Whether it’s through courses, hands-on projects, or internships, I want to prepare myself for a career that I am passionate about and that offers stability and growth.
+
+</p>
+</div>
+</div>
+<div class="goal-card" onclick="toggleGoalDetails(2)"> <div class="goal-header" style="background-color: #73738d;"><strong>Long-Term Goals</strong></div> <p>Create a Happy Family Life and Personal Fulfillment</p> <div class="goal-details" id="goal2-details">
+<p>My long-term goal is to build a stable, happy life with a career that supports my family and allows me to enjoy time with them. I hope to nurture a strong family bond, travel together, and create lasting memories while pursuing my own passions and personal fulfillment.
+
+</p>
+</div>
+</div>
+<div class="goal-card" onclick="toggleGoalDetails(3)"> <div class="goal-header" style="background-color: #897c91;"><strong>Career Goals</strong></div>
+<p>
+    Find a Job That Supports My Family and Career Growth</p>
+<div class="goal-details" id="goal3-details">
+<p>I want to secure a job that not only brings financial stability but also allows me to grow professionally and personally. Over time, I hope to advance in my career, take on leadership roles, and build a career that provides for my family and offers opportunities for long-term success.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<footer>
+<p>&copy; Rejohn James D. Ballenas. All rights reserved.</p> </footer>
+<div class="footer-divider"></div> <!-- Orange line -->
+<script>
+<!-- Embedded JavaScript -->
+// Function to toggle details for a single card
+function toggleGoalDetails(group) {
+    const details = document.getElementById('goal' + group + '-details');
+    if (details) {
+        details.classList.toggle('active');
+    }
+}
+</script>
+<script>
+// Logout function with confirmation
+function confirmLogout() {
+    // Show a confirmation message to the user
+    const confirmLogout = confirm("Are you sure you want to log out?");
+    // If the user confirms, proceed with logging out
+    if (confirmLogout) {
+        // Mark the user as logged out in localStorage (if used)
+        localStorage.removeItem("isLoggedIn");
+        // Redirect to the login page
+        window.location.href = "login.html";
+    } else {
+        // If the user cancels, do nothing
+        return;
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial- scale=1.0">
+<title>Gallery - Personal Website</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head> <body>
+<header>
+<h1>Welcome to My Personal Website</h1>
+</header>
+<nav>
+<ul>
+<li><a href="index.html"><i class="fas fa-home"></i> HOME</a></li>
+<li class="dropdown">
+<a href="#" class="dropbtn"><i class="fas fa-user"></i> ABOUT</a> <div class="dropdown-content">
+<a href="skills.html">Skills I'm Developing</a> <a href="goals.html">My Goals as a Student</a> <a href="funfacts.html">Fun Facts About Me</a> </div>
+</li>
+<li><a href="gallery.html"><i class="fas fa-images"></i> GALLERY</a></li> <li><a href="contact.html"><i class="fas fa-envelope"></i> CONTACT</a></li> <a href="javascript:void(0);" class="logout-button" onclick="confirmLogout()"><i class="fas fa-sign-out-alt"></i> LOG OUT</a>
+</ul>
+</nav>
+<section id="section2"></section>
+<section id="gallery">
+<h2>Gallery</h2>
+<p style="text-align: center;">Check out some of the images from my recent photography:</p>
+<div class="gallery">
+<div class="gallery-item">
+<img src="gallery image/header.jpg" alt="Project Image 1" class="thumbnail" onclick="openLightbox(0)">
+<p class="image-description">Fave Game</p>
+</div>
+<div class="gallery-item">
+<img src="gallery image/photo-1503803548695-c2a7b4a5b875.jpg" alt="Project Image 2" class="thumbnail" onclick="openLightbox(1)">
+<p class="image-description"> "Capture during a sunset"</p> </div>
+<div class="gallery-item">
+<img src="gallery image/best-gaming-desk-setups.webp" alt="Project Image 3" class="thumbnail" onclick="openLightbox(2)">
+<p class="image-description"> "Where the magic happens—my personal workspace!" Jk!</p> </div>
+<div class="gallery-item">
+<img src="gallery image/arcane-league-of-legends-original-poster-a7wd6oqbzjhoziwf.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(3)">
+<p class="image-description">Fave Series in Netflix</p> </div>
+<div class="gallery-item">
+<img src="gallery image/league-of-legends-2022-patch-schedule-all-lol-season-12-updates-changes.avif" alt="Project Image 3" class="thumbnail" onclick="openLightbox(4)">
+<p class="image-description">Avoid this game at all cost.</p> </div>
+<div class="gallery-item">
+<img src="gallery image/p9084210_b_h10_aa.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(5)">
+<p class="image-description">Fave Cartoon</p> </div>
+<!-- Add more gallery items as needed -->
+</div>
+<!-- Lightbox container -->
+<div id="lightbox" class="lightbox">
+<span class="close" onclick="closeLightbox()">&times;</span> <img class="lightbox-content" id="lightboxImage" src=""> <a class="prev" onclick="changeImage(-1)">&#10094;</a> <a class="next" onclick="changeImage(1)">&#10095;</a> </div>
+</section>
+<script>
+<!--Embedded JavaScript-->
+// Logout function with confirmation
+function confirmLogout() {
+// Show a confirmation message to the user
+const confirmLogout = confirm("Are you sure you want to log out?");
+// If the user confirms, proceed with logging out
+if (confirmLogout) {
+// Mark the user as logged out in localStorage (if used)
+localStorage.removeltem('isLoggedIn'); // Or any other keys related to login credentials
+// Redirect to the login page
+window.location.href = "login.html";
+} else {
+// If the user cancels, do nothing return;
+}
+}
+</script>
+<script>
+let currentImageIndex = 0;
+const images = document.querySelectorAll('.thumbnail');
+
+function openLightbox(index) {
+    document.getElementById('lightbox').style.display = 'block';
+    currentImageIndex = index;
+    showImage(currentImageIndex);
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+}
+
+function showImage(index) {
+    const lightboxImg = document.getElementById('lightboxImage');
+    lightboxImg.src = images[index].src;
+}
+
+function changeImage(direction) {
+    currentImageIndex += direction;
+    
+    // Wrap around when at the start or end of the images
+    if (currentImageIndex < 0) {
+        currentImageIndex = images.length - 1;
+    } else if (currentImageIndex >= images.length) {
+        currentImageIndex = 0;
+    }
+    
+    showImage(currentImageIndex);
+}
+
+// Add click events to all thumbnails
+images.forEach((img, index) => {
+    img.onclick = () => openLightbox(index);
+});
+</script>
+<footer>
+<p>&copy; 2024 Rejohn James D. Ballenas. All rights reserved.</p> </footer>
+<div class="footer-divider"></div>
+</body> </html>
